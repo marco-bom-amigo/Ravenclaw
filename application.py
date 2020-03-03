@@ -1084,7 +1084,7 @@ def form():
               
       for i in range(len(df)):
           html +=  '''
-                    <tr>
+                    <tr style="height:57px">
                         <td>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fBase(this.id)">Base</button>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fCeiling(this.id)">Ceiling</button>
