@@ -704,11 +704,11 @@ def create_message(sender, to, subject, message_text, files):
       
       # Get the file type
       content_type, encoding = mimetypes.guess_type(file)
-      main_type, sub_type = str(content_type).split('/', 1)
+      #main_type, sub_type = str(content_type).split('/', 1)
 
       # Open the file      
       fp = open(file, 'rb')
-      msg = MIMEBase(main_type, sub_type)
+      msg = MIMEBase(None, None)
       msg.set_payload(fp.read())
       fp.close()
     
@@ -1014,7 +1014,7 @@ def form():
 
                 <form method="POST">
                 <table style="font-family:arial;border:none" border=1>
-                  <tr style="font-weight: bold;">
+                   <tr style="font-weight: bold;height:60px">
                     <td>CRS ID</td>
                     <td>Planned live date</td>
                     <td>UF</td>
@@ -1078,8 +1078,8 @@ def form():
 
                  <td style="padding:0px;border:none" valign="top">
                     <table style="font-family:arial">
-                        <tr style="font-weight: bold;">
-                            <td>Preview</td>
+                         <tr style="font-weight: bold;height:60px">
+                            <td style ="width:180px">Preview</td>
                         </tr>'''
               
       for i in range(len(df)):
@@ -1118,8 +1118,6 @@ def form():
 
                       $.ajax({ url: "/base/"
                              , success: function(result){
-
-                                alert('base')
 
                                 var table = document.getElementById("t");
                                 $("#t tr").remove(); 
@@ -1200,8 +1198,6 @@ def form():
 
                       $.ajax({ url: "/ceiling/"
                              , success: function(result){
-
-                                alert('ceiling')
 
                                 var table = document.getElementById("t");
                                 $("#t tr").remove(); 
