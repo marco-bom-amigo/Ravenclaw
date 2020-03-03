@@ -429,7 +429,7 @@ df['Planned live date'] = df['Planned live date'].astype(str)
 df['Planned live date'] = pd.to_datetime(df['Planned live date'], errors = 'coerce')
 
 # Subset
-df = df[df['Planned live date'] >= today]
+df = df[df['Planned live date'] >= pd.to_datetime(today)]
 
 # Sort by "Planned live date"
 df = df.sort_values('Planned live date')
