@@ -704,7 +704,7 @@ def create_message(sender, to, subject, message_text, files):
       
       # Get the file type
       content_type, encoding = mimetypes.guess_type(file)
-      main_type, sub_type = content_type.split('/', 1)
+      main_type, sub_type = str(content_type).split('/', 1)
 
       # Open the file      
       fp = open(file, 'rb')
@@ -1116,8 +1116,10 @@ def form():
                       nota  = document.getElementById("nota_".concat(id).toString()).value
                       cncrn = document.getElementById("cncrn_".concat(id).toString()).value
 
-                      $.ajax({ url: "http://localhost/base/"
+                      $.ajax({ url: "/base/"
                              , success: function(result){
+
+                                alert('base')
 
                                 var table = document.getElementById("t");
                                 $("#t tr").remove(); 
@@ -1196,8 +1198,10 @@ def form():
                       nota  = document.getElementById("nota_".concat(id).toString()).value
                       cncrn = document.getElementById("cncrn_".concat(id).toString()).value
 
-                      $.ajax({ url: "http://localhost/ceiling/"
+                      $.ajax({ url: "/ceiling/"
                              , success: function(result){
+
+                                alert('ceiling')
 
                                 var table = document.getElementById("t");
                                 $("#t tr").remove(); 
@@ -1277,7 +1281,7 @@ def form():
                       nota  = document.getElementById("nota_".concat(id).toString()).value
                       cncrn = document.getElementById("cncrn_".concat(id).toString()).value
 
-                      $.ajax({ url: "http://localhost/floor/"
+                      $.ajax({ url: "/floor/"
                              , success: function(result){
 
                                 var table = document.getElementById("t");
@@ -1392,4 +1396,3 @@ app.run( threaded = True
        , port     = 8080
        )
 ##############
-
