@@ -1079,7 +1079,7 @@ def form():
                  <td style="padding:0px;border:none" valign="top">
                     <table style="font-family:arial">
                          <tr style="font-weight: bold;height:60px">
-                            <td style ="width:180px">Preview</td>
+                             <td style ="width:200px">Preview</td>
                         </tr>'''
               
       for i in range(len(df)):
