@@ -37,9 +37,9 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'
          ,'https://mail.google.com/'
          ,'https://www.googleapis.com/auth/drive']
 creds = None
-#if os.path.exists('token.pickle'):
-#    with open('token.pickle', 'rb') as token:
-#        creds = pickle.load(token)
+if os.path.exists('token.pickle'):
+    with open('token.pickle', 'rb') as token:
+        creds = pickle.load(token)
 if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
         creds.refresh(Request())
