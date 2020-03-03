@@ -1032,7 +1032,7 @@ def form():
                     
           html += '<tr style="height:63px">'
           html += '<td><input type="hidden" name="crs_id" value="'+df.iloc[i,0]+'">'+df.iloc[i,0]+'</td>'
-          html += '<td>'+str(df.iloc[i,14])+'</td>'
+          html += '<td style="padding-left: 5px;">'+str(df.iloc[i,14])+'</td>'
           html += '<td>'+str(df.iloc[i,3])+'</td>'
           html += '<td>'+str(df.iloc[i,6])+'</td>'
           
