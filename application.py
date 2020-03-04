@@ -989,7 +989,7 @@ def form():
                     }
                         
                     .p_button {
-                      background-color: #999999;
+                      background-color: #666;
                       color: white;
                       text-align: center;
                       text-decoration: none;
@@ -1057,9 +1057,9 @@ def form():
           
           html += '<td class="'+cluster+'">'+str(df.iloc[i,13])+'</td>'
           
-          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="nota_'+df.iloc[i,0]+'" name="nota"></td>'
-          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="cncrn_'+df.iloc[i,0]+'" name="concorrencia"></td>'
-          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="preco_'+df.iloc[i,0]+'" name="preco"></td>'
+          html += '<td><input onfocusout="values(this.id)" onkeyup="values(this.id)" type="text" size="5" id="nota_'+df.iloc[i,0]+'" name="nota"></td>'
+          html += '<td><input onfocusout="values(this.id)" onkeyup="values(this.id)" type="text" size="5" id="cncrn_'+df.iloc[i,0]+'" name="concorrencia"></td>'
+          html += '<td><input onfocusout="values(this.id)" onkeyup="values(this.id)" type="text" size="5" id="preco_'+df.iloc[i,0]+'" name="preco"></td>'
 
           if df.iloc[i,5] == 'PTI_Cleared':
               html += '<td class="crs-status-ok">'+str(df.iloc[i,5])+'</td>'
@@ -1092,7 +1092,7 @@ def form():
               
       for i in range(len(df)):
           html +=  '''
-                    <tr style="height:63px">
+                    <tr style="height:63px" id="pr_'''+df.iloc[i,0]+'''">
                         <td>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fBase(this.id)">Base</button>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fCeiling(this.id)">Ceiling</button>
@@ -1114,11 +1114,24 @@ def form():
                       var x = document.getElementById(id);
                       if (!isNaN(parseFloat(x.value))) {
                         x.value = parseFloat(x.value);
+                        var j_ID = "BR_".concat(id.split("_")[2])
+                        var i_nota  = document.getElementById("nota_".concat(j_ID))
+                        var i_cncrn = document.getElementById("cncrn_".concat(j_ID))
+                        var i_preco = document.getElementById("preco_".concat(j_ID))
+                        
+                        if (i_nota.value != '' && i_cncrn.value != '' && i_preco.value != '') {
+                          document.getElementById("tr_".concat(j_ID)).style.backgroundColor = "#DDFFDD";
+                          document.getElementById("pr_".concat(j_ID)).style.backgroundColor = "#4CAF50";
+                        } else {
+                          document.getElementById("tr_".concat(j_ID)).style.backgroundColor = "#FFFFFF";
+                          document.getElementById("pr_".concat(j_ID)).style.backgroundColor = "#FFFFFF";
+                        }
+
                       } else {
                         x.value = ''
                       }
                     }
-                    
+
                     var modal = document.getElementById("myModal");
                     var span = document.getElementsByClassName("close")[0];
 
