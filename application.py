@@ -28,7 +28,7 @@ import pytz
 context          = decimal.getcontext()
 context.rounding = decimal.ROUND_HALF_UP
 
-source_date = datetime.now()
+#source_date = datetime.datetime.now()
 source_time_zone = pytz.timezone('US/Eastern')
 source_date_with_timezone = source_time_zone.localize(source_date)
 target_time_zone = pytz.timezone('US/Eastern')
@@ -697,8 +697,8 @@ def create_message(sender, to, subject, message_text, files):
     
   # Creates the e-mail body
   message = MIMEMultipart()
-  #message['to'] = ", ".join(['vinicius.alves@oyorooms.com', 'ana.passos@oyorooms.com'])
-  message['to'] = ", ".join(['marcoantonio.bonamichi@oyorooms.com', 'marco.bom.amigo@gmail.com'])
+  message['to'] = ", ".join(['vinicius.alves@oyorooms.com', 'ana.passos@oyorooms.com'])
+  #message['to'] = ", ".join(['marcoantonio.bonamichi@oyorooms.com', 'marco.bom.amigo@gmail.com'])
   
   message['from'] = sender
   message['subject'] = subject
@@ -1038,9 +1038,9 @@ def form():
 
       for i in range(len(df)):
                     
-          html += '<tr style="height:63px">'
+          html += '<tr id="tr_'+df.iloc[i,0]+'" style="height:63px">'
           html += '<td><input type="hidden" name="crs_id" value="'+df.iloc[i,0]+'">'+df.iloc[i,0]+'</td>'
-          html += '<td style="padding-left: 5px;">'+str(df.iloc[i,14])+'</td>'
+          html += '<td style="padding-left: 5px;padding-right: 0px;">'+str(df.iloc[i,14])+'</td>'
           html += '<td>'+str(df.iloc[i,3])+'</td>'
           html += '<td>'+str(df.iloc[i,6])+'</td>'
           
@@ -1057,9 +1057,9 @@ def form():
           
           html += '<td class="'+cluster+'">'+str(df.iloc[i,13])+'</td>'
           
-          html += '<td><input type="text" size="5" id="nota_'+df.iloc[i,0]+'" name="nota"></td>'
-          html += '<td><input type="text" size="5" id="cncrn_'+df.iloc[i,0]+'" name="concorrencia"></td>'
-          html += '<td><input type="text" size="5" id="preco_'+df.iloc[i,0]+'" name="preco"></td>'
+          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="nota_'+df.iloc[i,0]+'" name="nota"></td>'
+          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="cncrn_'+df.iloc[i,0]+'" name="concorrencia"></td>'
+          html += '<td><input onkeyup="values(this.id)" type="text" size="5" id="preco_'+df.iloc[i,0]+'" name="preco"></td>'
 
           if df.iloc[i,5] == 'PTI_Cleared':
               html += '<td class="crs-status-ok">'+str(df.iloc[i,5])+'</td>'
@@ -1110,6 +1110,15 @@ def form():
                       
                 <script>
 
+                    function values(id) {
+                      var x = document.getElementById(id);
+                      if (!isNaN(parseFloat(x.value))) {
+                        x.value = parseFloat(x.value);
+                      } else {
+                        x.value = ''
+                      }
+                    }
+                    
                     var modal = document.getElementById("myModal");
                     var span = document.getElementsByClassName("close")[0];
 
