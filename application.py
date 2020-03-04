@@ -691,7 +691,7 @@ def create_message(sender, to, subject, message_text, files):
     
   # Creates the e-mail body
   message = MIMEMultipart()
-  message['to'] = to
+  message['to'] = ", ".join(['vinicius.alves@oyorooms.com', 'ana.passos@oyorooms.com'])
   message['from'] = sender
   message['subject'] = subject
   msg = MIMEText(message_text)
