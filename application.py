@@ -28,7 +28,7 @@ import pytz
 context          = decimal.getcontext()
 context.rounding = decimal.ROUND_HALF_UP
 
-#source_date = datetime.datetime.now()
+source_date = datetime.datetime.now()
 source_time_zone = pytz.timezone('US/Eastern')
 source_date_with_timezone = source_time_zone.localize(source_date)
 target_time_zone = pytz.timezone('US/Eastern')
