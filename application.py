@@ -943,6 +943,8 @@ def form():
                    .Seasonal-High-Demand, .Regular-High-Demand, .Seasonal-Low-Demand, .Regular-Low-Demand {
                       font-weight: bold;
                       font-size: 18px;
+                      padding:0px;
+                      padding-left:2px;
                    }
                    .Seasonal-High-Demand {background-color: #cc4125;}
                    .Regular-High-Demand {background-color: #ea9999;}
@@ -999,6 +1001,8 @@ def form():
                       cursor: pointer;
                       border-radius: 25px;
                       border: none;
+                      float:left;
+                      margin-left:2px;
                     }
                     input[type="text"] {
                         font-size:16px;
@@ -1093,7 +1097,7 @@ def form():
       for i in range(len(df)):
           html +=  '''
                     <tr style="height:63px" id="pr_'''+df.iloc[i,0]+'''">
-                        <td>
+                        <td style="padding:0px">
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fBase(this.id)">Base</button>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fCeiling(this.id)">Ceiling</button>
                             <button class = "p_button" id="'''+str(df.iloc[i,0])+'''" onclick="fFloor(this.id)">Floor</button>
