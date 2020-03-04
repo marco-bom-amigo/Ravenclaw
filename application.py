@@ -19,7 +19,7 @@ import numpy as np
 from datetime import date, datetime
 import decimal
 from flask import Flask, request, jsonify
-import json
+import pytz
 ############################
 
 ##################################
@@ -27,7 +27,13 @@ import json
 ##################################
 context          = decimal.getcontext()
 context.rounding = decimal.ROUND_HALF_UP
-today            = date.today()
+
+#source_date = datetime.datetime.now()
+source_time_zone = pytz.timezone('US/Eastern')
+source_date_with_timezone = source_time_zone.localize(source_date)
+target_time_zone = pytz.timezone('US/Eastern')
+target_date_with_timezone = source_date_with_timezone.astimezone(target_time_zone)
+today            = target_date_with_timezone.today()
 ##################################
 
 ##########################################
@@ -691,7 +697,9 @@ def create_message(sender, to, subject, message_text, files):
     
   # Creates the e-mail body
   message = MIMEMultipart()
-  message['to'] = ", ".join(['vinicius.alves@oyorooms.com', 'ana.passos@oyorooms.com'])
+  #message['to'] = ", ".join(['vinicius.alves@oyorooms.com', 'ana.passos@oyorooms.com'])
+  message['to'] = ", ".join(['marcoantonio.bonamichi@oyorooms.com', 'marco.bom.amigo@gmail.com'])
+  
   message['from'] = sender
   message['subject'] = subject
   msg = MIMEText(message_text)
