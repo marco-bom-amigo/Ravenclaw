@@ -16,7 +16,7 @@ import mimetypes
 import base64
 import pandas as pd
 import numpy as np
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 import decimal
 from flask import Flask, request, jsonify
 import pytz
@@ -28,12 +28,12 @@ import pytz
 context          = decimal.getcontext()
 context.rounding = decimal.ROUND_HALF_UP
 
-source_date = datetime.now()
-source_time_zone = pytz.timezone('US/Eastern')
+source_date               = datetime.now()
+source_time_zone          = pytz.timezone('US/Eastern')
 source_date_with_timezone = source_time_zone.localize(source_date)
-target_time_zone = pytz.timezone('US/Eastern')
+target_time_zone          = pytz.timezone('US/Eastern')
 target_date_with_timezone = source_date_with_timezone.astimezone(target_time_zone)
-today            = target_date_with_timezone.today()
+today                     = target_date_with_timezone.today() - timedelta(days=1)
 ##################################
 
 ##########################################
