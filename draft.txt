@@ -1,0 +1,11 @@
+t2.micro
+
+Key pair name
+"IuliaHasdeu"
+
+Public DNS (IPv4)
+"ec2-3-88-195-69.compute-1.amazonaws.com"
+
+User
+"ec2-user@ec2-3-88-195-69.compute-1.amazonaws.com"
+
