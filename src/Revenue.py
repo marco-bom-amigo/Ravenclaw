@@ -3,6 +3,7 @@ import decimal
 import pytz
 import numpy as np
 import pandas as pd
+
 from src.Utils import Utils
 from src.Data import Data
 
@@ -320,6 +321,8 @@ class Revenue:
 
 
     def __init__(self):
+
+        super().__init__()
         
         #####################
         ## Get current day ##
